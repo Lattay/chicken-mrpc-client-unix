@@ -1,7 +1,7 @@
 # About
 
-This is a small egg to provide Unix socket transport to msgpack-rpc-client egg without making
-the socket egg a direct dependencie.
+This is a small egg [Chicken](call-cc.org) to provide Unix socket transport to [msgpack-rpc-client egg](https://github.com/Lattay/chicken-msgpack-rpc-client)
+without making the socket egg a direct dependencie.
 
 It provide two procedures:
 
