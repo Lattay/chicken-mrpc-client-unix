@@ -1,0 +1,11 @@
+((license "MIT")
+ (category network)
+ (dependencies msgpack-rpc-client socket)
+ (test-dependencies test)
+ (author "Théo Cavignac")
+ (version "0.1.0")
+ (synopsis "Add unix socket transport to msgpack-rpc-client")
+ (components 
+    (extension mrpc-client-unix
+      (source "src/mrpc-client-unix.scm")
+      (modules mrpc-client-unix))))
