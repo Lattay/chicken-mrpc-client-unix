@@ -1,4 +1,5 @@
-(module mrpc-client-unix (make-client)
+(module mrpc-client-unix (make-client
+                          make-unix-port-connector)
         (import scheme
                 chicken.base
                 chicken.port
@@ -59,11 +60,14 @@
                 (make-input-port this-read this-ready? this-close)
                 (make-output-port this-write this-close)))))
 
+        ;; Return a thunk that connect to the unix socket
+        ;; found at path and return two values: in and out ports
+        (define (make-unix-port-connector path)
+          (lambda ()
+            (make-unix-port path)))
+
         ;; Create a msgpack-rpc-client instance with transport over
         ;; a Unix socket found at path
         (define (make-client path)
-          (mrpc:make-client 
-            'extend
-            (lambda ()
-              (make-unix-port path))))
+          (mrpc:make-client 'extend (make-unix-port-connector path)))
         )
